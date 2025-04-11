@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantrishop Game Interface - Win</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/custom.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Header with Balance -->
+        <div class="header">
+            <h4>Available balance: ₹<span id="balance">0.90</span></h4>
+            <div class="header-buttons">
+                <button class="btn btn-success">Recharge</button>
+                <button class="btn btn-default">Read Rule</button>
+                <button class="btn btn-info">Refresh</button>
+            </div>
+        </div>
+
+        <!-- Category Pills -->
+        <ul class="nav nav-pills category-pills" role="tablist">
+            <li role="presentation" class="active"><a href="#" data-category="Parity">Parity</a></li>
+            <li role="presentation"><a href="#" data-category="Sapre">Sapre</a></li>
+            <li role="presentation"><a href="#" data-category="Bcone">Bcone</a></li>
+            <li role="presentation"><a href="#" data-category="Emerd">Emerd</a></li>
+        </ul>
+
+        <!-- Period and Countdown -->
+        <div class="period-countdown">
+            <div class="period">
+                <p><img src="images/w3.png" alt="Period icon">Period</p>
+                <h4><span id="period" class="bold-period">20250409000</span></h4>
+            </div>
+            <div class="countdown text-right">
+                <p>Count Down</p>
+                <h4 id="countdown" style="margin: 0px;">00:00</h4>
+            </div>
+        </div>
+
+        <!-- Join Buttons -->
+        <div class="join-buttons btn-group btn-group-justified" role="group">
+            <div class="btn-group">
+                <button class="btn btn-success rounded-btn" data-toggle="modal" data-target="#contractModal">Join Green</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-purple rounded-btn" data-toggle="modal" data-target="#contractModal">Join Violet</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-danger rounded-btn" data-toggle="modal" data-target="#contractModal">Join Red</button>
+            </div>
+        </div>
+
+        <!-- Spacer -->
+        <div class="spacer"></div>
+
+        <!-- Number Grid (Custom Layout) -->
+        <div class="number-grid">
+            <div class="number-row">
+                <button class="btn custom-gradient-red-violet" data-toggle="modal" data-target="#contractModal">0</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#contractModal">1</button>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#contractModal">2</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#contractModal">3</button>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#contractModal">4</button>
+            </div>
+            <div class="number-row">
+                <button class="btn custom-gradient-green-violet" data-toggle="modal" data-target="#contractModal">5</button>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#contractModal">6</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#contractModal">7</button>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#contractModal">8</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#contractModal">9</button>
+            </div>
+        </div>
+
+        <!-- Thin Horizontal Line -->
+        <hr class="number-line">
+
+        <!-- Emerd Record Centered -->
+        <div class="record-table">
+            <img src="images/w2.png" alt="Record icon"> <p><span id="record-title">Parity</span> Record</p>
+            <hr class="number-line">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Period</th>
+                        <th>Price</th>
+                        <th>Number</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>20250409010</td><td>12345</td><td>5</td><td></td></tr>
+                    <tr><td>20250409009</td><td>23456</td><td>6</td><td></td></tr>
+                    <tr><td>20250409008</td><td>34567</td><td>7</td><td></td></tr>
+                    <tr><td>20250409007</td><td>45678</td><td>8</td><td></td></tr>
+                    <tr><td>20250409006</td><td>56789</td><td>9</td><td></td></tr>
+                    <tr><td>20250409005</td><td>32853</td><td>8</td><td></td></tr>
+                    <tr><td>20250409004</td><td>39442</td><td>2</td><td></td></tr>
+                    <tr><td>20250409003</td><td>35406</td><td>6</td><td></td></tr>
+                    <tr><td>20250409002</td><td>36564</td><td>4</td><td></td></tr>
+                    <tr><td>20250409001</td><td>36536</td><td>6</td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Navigation Bar with Images (Stretched) -->
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <ul class="nav nav-tabs nav-justified">
+                <li><a href="home.html"><img src="images/g1.png" alt="Home icon"> Home</a></li>
+                <li class="active"><a href="wining.html"><img src="images/w1.png" alt="Wining icon"> Wining</a></li>
+                <li><a href="profile.html"><img src="images/a1.png" alt="Profile icon"> Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contract Modal Popup -->
+    <div class="modal fade" id="contractModal" tabindex="-1" role="dialog" aria-labelledby="contractModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contractModalLabel">Join <span id="selectedOption"></span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Contract Money</label>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-secondary active">
+                                <input type="radio" name="contractMoney" value="10" checked> 10
+                            </label>
+                            <label class="btn btn-outline-secondary">
+                                <input type="radio" name="contractMoney" value="100"> 100
+                            </label>
+                            <label class="btn btn-outline-secondary">
+                                <input type="radio" name="contractMoney" value="1000"> 1000
+                            </label>
+                            <label class="btn btn-outline-secondary">
+                                <input type="radio" name="contractMoney" value="10000"> 10000
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group number-controls">
+                        <label>Number</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary" id="decreaseNumber">-</button>
+                            </div>
+                            <input type="text" class="form-control text-center" id="selectedNumber" value="1" readonly>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" id="increaseNumber">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Total contract money is <span id="totalContractMoney">10</span></p>
+                    <div class="form-group agreement-static">
+                        <span class="checkmark">✓</span> I agree <span class="presale-rule">PRESALE RULE</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                    <button type="button" class="btn btn-success" id="confirmButton">CONFIRM</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/custom.js"></script>
+</body>
+</html>

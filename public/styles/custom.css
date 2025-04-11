@@ -1,0 +1,541 @@
+/* Reset and Base Styles */
+body {
+    padding-top: 8px; /* Changed from padding: 10px */
+    background-color: #f5f5f5;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding-bottom: 40px;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.header h4 {
+    margin: 0;
+    flex: 1;
+    font-size: 15px;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 20px;
+}
+
+.header-buttons .btn {
+    margin: 0 10px;
+    flex: 1;
+    font-size: 14px;
+}
+
+/* Header Buttons Click Colors */
+.header-buttons .btn.btn-success:active {
+    background-color: #28a745 !important;
+    border: 2px solid #1e7e34 !important;
+    color: #fff !important;
+}
+
+.header-buttons .btn.btn-default:active {
+    background-color: #e0e0e0 !important;
+    border: 2px solid #b0b0b0 !important;
+    color: #333 !important;
+}
+
+.header-buttons .btn.btn-info:active {
+    background-color: #17a2b8 !important;
+    border: 2px solid #117a8b !important;
+    color: #fff !important;
+}
+
+.header-buttons .btn:first-child {
+    margin-left: 0;
+}
+
+.header-buttons .btn:last-child {
+    margin-right: 0;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .header {
+        justify-content: center;
+    }
+    .header-buttons {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .header-buttons .btn {
+        margin: 0 5px;
+        flex: 1;
+        min-width: 80px;
+    }
+}
+
+.category-pills {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+}
+
+.category-pills > li {
+    flex: 1;
+    text-align: center;
+}
+
+.category-pills > li > a {
+    color: #333;
+    width: 100%;
+    display: block;
+    padding: 7px;
+    border: 1px solid lightgrey;
+    height: 35px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.category-pills > li.active > a,
+.category-pills > li > a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Category Pills Click Color */
+.category-pills > li > a:active {
+    background-color: #0056b3 !important;
+    border: 2px solid #003087 !important;
+    color: #fff !important;
+}
+
+.period-countdown {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.period, .countdown {
+    flex: 1;
+    text-align: left;
+}
+
+.countdown {
+    text-align: right;
+}
+
+.period p img,
+.countdown p img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.bold-period {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.join-buttons {
+    margin-top: 10px;
+}
+
+.join-buttons .btn-group {
+    margin-right: 20px;
+}
+
+.join-buttons .btn-group:last-child {
+    margin-right: 0;
+}
+
+.join-buttons .btn-group .btn {
+    width: 100%;
+    height: 35px;
+    border: 0;
+    font-size: 14px;
+}
+
+/* Join Buttons Click Colors */
+.join-buttons .btn-group .btn.btn-success:active {
+    background-color: #28a745 !important;
+    border: 2px solid #1e7e34 !important;
+    color: #fff !important;
+}
+
+.join-buttons .btn-group .btn.btn-purple:active {
+    background-color: #993399 !important;
+    border: 2px solid #660066 !important;
+    color: #fff !important;
+}
+
+.join-buttons .btn-group .btn.btn-danger:active {
+    background-color: #dc3545 !important;
+    border: 2px solid #bd2130 !important;
+    color: #fff !important;
+}
+
+.rounded-btn {
+    border-radius: 5px !important;
+}
+
+.number-grid {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.number-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    clear: both;
+}
+
+.number-row button {
+    flex: 1;
+    margin: 0 5px;
+    width: 50px;
+    height: 35px;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    text-align: center;
+    line-height: 25px;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+/* Number Buttons Click Colors */
+.number-row button.btn.custom-gradient-red-violet:active {
+    background: linear-gradient(150deg, #e60000 50%, #993399 50%) !important;
+    border: 2px solid #660066 !important;
+    color: #fff !important;
+}
+
+.number-row button.btn.btn-success:active {
+    background-color: #28a745 !important;
+    border: 2px solid #1e7e34 !important;
+    color: #fff !important;
+}
+
+.number-row button.btn.btn-danger:active {
+    background-color: #dc3545 !important;
+    border: 2px solid #bd2130 !important;
+    color: #fff !important;
+}
+
+.number-row button.btn.custom-gradient-green-violet:active {
+    background: linear-gradient(150deg, #00b300 50%, #993399 50%) !important;
+    border: 2px solid #660066 !important;
+    color: #fff !important;
+}
+
+.number-row button:first-child {
+    margin-left: 0;
+}
+
+.number-row button:last-child {
+    margin-right: 0;
+    margin-bottom: 8px;
+}
+
+.custom-gradient-red-violet {
+    background: linear-gradient(150deg, #ff0000 50%, #800080 50%);
+    color: white;
+}
+
+.custom-gradient-green-violet {
+    background: linear-gradient(150deg, #008000 50%, #800080 50%);
+    color: white;
+}
+
+.spacer {
+    height: 20px;
+}
+
+.number-line {
+    border: 1px solid lightgrey;
+    margin: 0;
+}
+
+.record-table {
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+.record-table table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.record-table td {
+    padding: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.record-table p img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+#countdown {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.btn-purple {
+    background-color: #800080;
+    color: white;
+    border-color: #800080;
+}
+
+.btn-purple:hover {
+    background-color: #660066;
+    border-color: #660066;
+}
+
+/* Navigation Bar Styling */
+.navbar-fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 0.5px solid black;
+    background-color: white;
+    z-index: 1000;
+}
+
+.nav-tabs {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ddd;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-tabs > li {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 55px;
+}
+
+.nav-tabs > li > a {
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px;
+    width: 70%;
+    height: 70%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li > a:hover {
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 92%;
+}
+
+.nav-tabs > li.active > a {
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Nav Tabs Click Color */
+.nav-tabs > li > a:active {
+    background-color: #0069d9 !important;
+    border: 2px solid #0056b3 !important;
+    color: #fff !important;
+}
+
+.nav-tabs {
+    overflow-x: hidden;
+    white-space: nowrap;
+    width: 100%;
+    height: 59.5px;
+    box-sizing: border-box;
+}
+
+.nav-tabs > li > a img {
+    width: 20px;
+    height: 20px;
+    margin: 4px;
+}
+
+.btn-group-justified {
+    display: flex;
+    width: 100%;
+}
+
+.btn-group-justified .btn-group {
+    flex: 1;
+}
+
+h3, h4 {
+    font-size: 15px;
+    text-align: left;
+    font-weight: normal;
+}
+
+p {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+img {
+    width: 16px;
+    height: 16px;
+}
+
+.navbar-fixed-bottom .container-fluid {
+    padding: 0;
+    width: 100%;
+    margin: 0;
+    height: 55px;
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+}
+
+.modal-body .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.btn-group-toggle .btn {
+    border-radius: 5px !important;
+    margin-right: 5px;
+}
+
+.btn-group-toggle .btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.number-controls .input-group {
+    display: flex;
+    align-items: center;
+}
+
+#selectedNumber {
+    max-width: 60px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    text-align: center;
+    margin: 0 5px;
+}
+
+#totalContractMoney {
+    font-weight: bold;
+}
+
+.agreement-static {
+    display: flex;
+    align-items: center;
+}
+
+.checkmark {
+    font-size: 20px;
+    color: #28a745;
+    margin-right: 5px;
+}
+
+.presale-rule {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: default;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.modal-footer .btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.modal-footer .btn-success:disabled {
+    background-color: #ccc;
+    color: #666;
+}
+
+/* Contract Summary (for home.html, already included) */
+.contract-summary {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.contract-summary h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contract-summary p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #555;
+}
+
+.contract-summary span {
+    font-weight: bold;
+    color: #007bff;
+}

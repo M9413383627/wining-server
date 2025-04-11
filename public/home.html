@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantrishop Game Interface - Home</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/custom.css">
+    <style>
+        .lock-text {
+            display: none;
+            text-align: center;
+            background-color: #ff4444;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+        .lock-text.active {
+            display: block;
+        }
+        .navbar-fixed-bottom {
+            z-index: 1001;
+            pointer-events: auto;
+        }
+        .contract-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        .contract-table th, .contract-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        .contract-table th {
+            background-color: #f2f2f2;
+        }
+        .contract-table th:first-child {
+            position: sticky;
+            left: 0;
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+        .contract-table td:first-child {
+            position: sticky;
+            left: 0;
+            background-color: #fff;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Lock Text Indicator -->
+        <div class="lock-text" id="lockText">LOCKED</div>
+
+        <!-- Header with Balance -->
+        <div class="header">
+            <h4>Available balance: ₹<span id="balance">0.90</span></h4>
+            <div class="header-buttons">
+                <button class="btn btn-success">Recharge</button>
+                <button class="btn btn-default">Read Rule</button>
+                <button class="btn btn-info">Refresh</button>
+            </div>
+        </div>
+
+        <!-- Contract Amounts Table -->
+        <div class="contract-summary">
+            <h4>Contract Amounts</h4>
+            <table class="contract-table" id="contractTable">
+                <thead>
+                    <tr>
+                        <th>Contract Type</th>
+                        <th>Parity</th>
+                        <th>Sapre</th>
+                        <th>Bcone</th>
+                        <th>Emerd</th>
+                    </tr>
+                </thead>
+                <tbody id="contractTableBody">
+                    <!-- Rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Navigation Bar with Images (Stretched) -->
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="home.html"><img src="images/g1.png" alt="Home icon"> Home</a></li>
+                <li><a href="wining.html"><img src="images/w1.png" alt="Wining icon"> Wining</a></li>
+                <li><a href="profile.html"><img src="images/a1.png" alt="Profile icon"> Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/custom.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize contracts object from localStorage if not already defined
+            if (typeof contracts === 'undefined') {
+                console.warn('contracts object not found in global scope. Initializing from localStorage.');
+                window.contracts = {
+                    Parity: {
+                        greenContract: parseInt(localStorage.getItem('paritygreencontract')) || 0,
+                        redContract: parseInt(localStorage.getItem('parityredcontract')) || 0,
+                        violetContract: parseInt(localStorage.getItem('parityvioletcontract')) || 0,
+                        contract0: parseInt(localStorage.getItem('paritycontract0')) || 0,
+                        contract1: parseInt(localStorage.getItem('paritycontract1')) || 0,
+                        contract2: parseInt(localStorage.getItem('paritycontract2')) || 0,
+                        contract3: parseInt(localStorage.getItem('paritycontract3')) || 0,
+                        contract4: parseInt(localStorage.getItem('paritycontract4')) || 0,
+                        contract5: parseInt(localStorage.getItem('paritycontract5')) || 0,
+                        contract6: parseInt(localStorage.getItem('paritycontract6')) || 0,
+                        contract7: parseInt(localStorage.getItem('paritycontract7')) || 0,
+                        contract8: parseInt(localStorage.getItem('paritycontract8')) || 0,
+                        contract9: parseInt(localStorage.getItem('paritycontract9')) || 0
+                    },
+                    Sapre: {
+                        greenContract: parseInt(localStorage.getItem('sapregreencontract')) || 0,
+                        redContract: parseInt(localStorage.getItem('sapreredcontract')) || 0,
+                        violetContract: parseInt(localStorage.getItem('saprevioletcontract')) || 0,
+                        contract0: parseInt(localStorage.getItem('saprecontract0')) || 0,
+                        contract1: parseInt(localStorage.getItem('saprecontract1')) || 0,
+                        contract2: parseInt(localStorage.getItem('saprecontract2')) || 0,
+                        contract3: parseInt(localStorage.getItem('saprecontract3')) || 0,
+                        contract4: parseInt(localStorage.getItem('saprecontract4')) || 0,
+                        contract5: parseInt(localStorage.getItem('saprecontract5')) || 0,
+                        contract6: parseInt(localStorage.getItem('saprecontract6')) || 0,
+                        contract7: parseInt(localStorage.getItem('saprecontract7')) || 0,
+                        contract8: parseInt(localStorage.getItem('saprecontract8')) || 0,
+                        contract9: parseInt(localStorage.getItem('saprecontract9')) || 0
+                    },
+                    Bcone: {
+                        greenContract: parseInt(localStorage.getItem('bconegreencontract')) || 0,
+                        redContract: parseInt(localStorage.getItem('bconeredcontract')) || 0,
+                        violetContract: parseInt(localStorage.getItem('bconevioletcontract')) || 0,
+                        contract0: parseInt(localStorage.getItem('bconecontract0')) || 0,
+                        contract1: parseInt(localStorage.getItem('bconecontract1')) || 0,
+                        contract2: parseInt(localStorage.getItem('bconecontract2')) || 0,
+                        contract3: parseInt(localStorage.getItem('bconecontract3')) || 0,
+                        contract4: parseInt(localStorage.getItem('bconecontract4')) || 0,
+                        contract5: parseInt(localStorage.getItem('bconecontract5')) || 0,
+                        contract6: parseInt(localStorage.getItem('bconecontract6')) || 0,
+                        contract7: parseInt(localStorage.getItem('bconecontract7')) || 0,
+                        contract8: parseInt(localStorage.getItem('bconecontract8')) || 0,
+                        contract9: parseInt(localStorage.getItem('bconecontract9')) || 0
+                    },
+                    Emerd: {
+                        greenContract: parseInt(localStorage.getItem('emerdgreencontract')) || 0,
+                        redContract: parseInt(localStorage.getItem('emerdredcontract')) || 0,
+                        violetContract: parseInt(localStorage.getItem('emerdvioletcontract')) || 0,
+                        contract0: parseInt(localStorage.getItem('emerdcontract0')) || 0,
+                        contract1: parseInt(localStorage.getItem('emerdcontract1')) || 0,
+                        contract2: parseInt(localStorage.getItem('emerdcontract2')) || 0,
+                        contract3: parseInt(localStorage.getItem('emerdcontract3')) || 0,
+                        contract4: parseInt(localStorage.getItem('emerdcontract4')) || 0,
+                        contract5: parseInt(localStorage.getItem('emerdcontract5')) || 0,
+                        contract6: parseInt(localStorage.getItem('emerdcontract6')) || 0,
+                        contract7: parseInt(localStorage.getItem('emerdcontract7')) || 0,
+                        contract8: parseInt(localStorage.getItem('emerdcontract8')) || 0,
+                        contract9: parseInt(localStorage.getItem('emerdcontract9')) || 0
+                    }
+                };
+            } else {
+                console.log('contracts object found in global scope:', contracts);
+            }
+
+            // Function to populate contract table
+            function updateContractTable() {
+                const contractTypes = ['greenContract', 'redContract', 'violetContract', 'contract0', 'contract1', 'contract2', 'contract3', 'contract4', 'contract5', 'contract6', 'contract7', 'contract8', 'contract9'];
+                const categories = ['Parity', 'Sapre', 'Bcone', 'Emerd'];
+                const $tbody = $('#contractTableBody');
+                $tbody.empty(); // Clear existing rows
+
+                console.log('Populating contract table with contracts:', contracts);
+
+                if (!contracts || Object.keys(contracts).length === 0) {
+                    console.error('contracts object is empty or undefined');
+                    $tbody.append('<tr><td colspan="5">No contract data available</td></tr>');
+                    return;
+                }
+
+                contractTypes.forEach(type => {
+                    const displayType = type.replace('Contract', '').replace('contract', '').charAt(0).toUpperCase() + type.replace('Contract', '').replace('contract', '').slice(1);
+                    const row = `
+                        <tr>
+                            <td>${displayType}</td>
+                            ${categories.map(category => {
+                                const value = contracts[category] && contracts[category][type] !== undefined ? contracts[category][type] : 0;
+                                return `<td>${value}</td>`;
+                            }).join('')}
+                        </tr>`;
+                    $tbody.append(row);
+                });
+
+                console.log('Table population completed. Rows added:', contractTypes.length);
+            }
+
+            // Load and display contract table on page load
+            updateContractTable();
+
+            // Check and toggle lock text based on isLocked flag
+            function updateLockText() {
+                const isLocked = localStorage.getItem('isLocked') === 'true';
+                $('#lockText').toggleClass('active', isLocked);
+            }
+            updateLockText();
+            setInterval(updateLockText, 1000);
+        });
+    </script>
+</body>
+</html>

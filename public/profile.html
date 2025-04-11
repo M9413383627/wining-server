@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantrishop Game Interface - Profile</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/custom.css">
+    <style>
+        .lock-text {
+            display: none;
+            text-align: center;
+            background-color: #ff4444;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+        .lock-text.active {
+            display: block;
+        }
+        .navbar-fixed-bottom {
+            z-index: 1001;
+            pointer-events: auto;
+        }
+        .payable-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        .payable-table th, .payable-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        .payable-table th {
+            background-color: #f2f2f2;
+        }
+        .payable-table th:first-child {
+            position: sticky;
+            left: 0;
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+        .payable-table td:first-child {
+            position: sticky;
+            left: 0;
+            background-color: #fff;
+            z-index: 1;
+        }
+        /* Style for horizontal manual selection */
+        .manual-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .manual-input div {
+            margin: 0;
+        }
+        .manual-input label {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Lock Text Indicator -->
+        <div class="lock-text" id="lockText">LOCKED</div>
+
+        <!-- Header with Balance -->
+        <div class="header">
+            <h4>Available balance: ₹<span id="balance">0.90</span></h4>
+            <div class="header-buttons">
+                <button class="btn btn-success">Recharge</button>
+                <button class="btn btn-default">Read Rule</button>
+                <button class="btn btn-info">Refresh</button>
+            </div>
+        </div>
+
+        <!-- Profile Information -->
+        <div class="profile-info">
+            <h3>Profile Details</h3>
+            <p>User ID: 12345</p>
+            <p>Email: user@example.com</p>
+            <p>Joined: April 01, 2025</p>
+        </div>
+
+        <!-- Payable Amounts Table -->
+        <div class="payable-summary">
+            <h4>Payable Amounts</h4>
+            <table class="payable-table" id="payableTable">
+                <thead>
+                    <tr>
+                        <th>Payable Number</th>
+                        <th>Parity</th>
+                        <th>Sapre</th>
+                        <th>Bcone</th>
+                        <th>Emerd</th>
+                    </tr>
+                </thead>
+                <tbody id="payableTableBody">
+                    <!-- Rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mode Selection and Manual Input -->
+        <div class="mode-selection">
+            <h4>Result Mode</h4>
+            <select id="modeSelect" class="form-control" style="width: 200px; display: inline-block;">
+                <option value="auto">Auto Mode</option>
+                <option value="manual">Manual Mode</option>
+            </select>
+            <div class="manual-input" style="display: none;">
+                <h5>Manual Number Selection</h5>
+                <div>
+                    <label>Parity: </label>
+                    <select class="select-number" data-category="Parity">
+                        <option value="">Select</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Sapre: </label>
+                    <select class="select-number" data-category="Sapre">
+                        <option value="">Select</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Bcone: </label>
+                    <select class="select-number" data-category="Bcone">
+                        <option value="">Select</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Emerd: </label>
+                    <select class="select-number" data-category="Emerd">
+                        <option value="">Select</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Display -->
+        <div class="result-display">
+            <h4>Results</h4>
+            <p>Parity: <span id="result-parity"></span></p>
+            <p>Sapre: <span id="result-sapre"></span></p>
+            <p>Bcone: <span id="result-bcone"></span></p>
+            <p>Emerd: <span id="result-emerd"></span></p>
+        </div>
+    </div>
+
+    <!-- Navigation Bar with Images (Stretched) -->
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <ul class="nav nav-tabs nav-justified">
+                <li><a href="home.html"><img src="images/g1.png" alt="Home icon"> Home</a></li>
+                <li><a href="wining.html"><img src="images/w1.png" alt="Wining icon"> Wining</a></li>
+                <li class="active"><a href="profile.html"><img src="images/a1.png" alt="Profile icon"> Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/custom.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize payables object from localStorage if not already defined
+            if (typeof payables === 'undefined') {
+                console.warn('payables object not found in global scope. Initializing from localStorage.');
+                window.payables = {
+                    Parity: {
+                        payable0: parseInt(localStorage.getItem('paritypayable0')) || 0,
+                        payable1: parseInt(localStorage.getItem('paritypayable1')) || 0,
+                        payable2: parseInt(localStorage.getItem('paritypayable2')) || 0,
+                        payable3: parseInt(localStorage.getItem('paritypayable3')) || 0,
+                        payable4: parseInt(localStorage.getItem('paritypayable4')) || 0,
+                        payable5: parseInt(localStorage.getItem('paritypayable5')) || 0,
+                        payable6: parseInt(localStorage.getItem('paritypayable6')) || 0,
+                        payable7: parseInt(localStorage.getItem('paritypayable7')) || 0,
+                        payable8: parseInt(localStorage.getItem('paritypayable8')) || 0,
+                        payable9: parseInt(localStorage.getItem('paritypayable9')) || 0
+                    },
+                    Sapre: {
+                        payable0: parseInt(localStorage.getItem('saprepayable0')) || 0,
+                        payable1: parseInt(localStorage.getItem('saprepayable1')) || 0,
+                        payable2: parseInt(localStorage.getItem('saprepayable2')) || 0,
+                        payable3: parseInt(localStorage.getItem('saprepayable3')) || 0,
+                        payable4: parseInt(localStorage.getItem('saprepayable4')) || 0,
+                        payable5: parseInt(localStorage.getItem('saprepayable5')) || 0,
+                        payable6: parseInt(localStorage.getItem('saprepayable6')) || 0,
+                        payable7: parseInt(localStorage.getItem('saprepayable7')) || 0,
+                        payable8: parseInt(localStorage.getItem('saprepayable8')) || 0,
+                        payable9: parseInt(localStorage.getItem('saprepayable9')) || 0
+                    },
+                    Bcone: {
+                        payable0: parseInt(localStorage.getItem('bconepayable0')) || 0,
+                        payable1: parseInt(localStorage.getItem('bconepayable1')) || 0,
+                        payable2: parseInt(localStorage.getItem('bconepayable2')) || 0,
+                        payable3: parseInt(localStorage.getItem('bconepayable3')) || 0,
+                        payable4: parseInt(localStorage.getItem('bconepayable4')) || 0,
+                        payable5: parseInt(localStorage.getItem('bconepayable5')) || 0,
+                        payable6: parseInt(localStorage.getItem('bconepayable6')) || 0,
+                        payable7: parseInt(localStorage.getItem('bconepayable7')) || 0,
+                        payable8: parseInt(localStorage.getItem('bconepayable8')) || 0,
+                        payable9: parseInt(localStorage.getItem('bconepayable9')) || 0
+                    },
+                    Emerd: {
+                        payable0: parseInt(localStorage.getItem('emerdpayable0')) || 0,
+                        payable1: parseInt(localStorage.getItem('emerdpayable1')) || 0,
+                        payable2: parseInt(localStorage.getItem('emerdpayable2')) || 0,
+                        payable3: parseInt(localStorage.getItem('emerdpayable3')) || 0,
+                        payable4: parseInt(localStorage.getItem('emerdpayable4')) || 0,
+                        payable5: parseInt(localStorage.getItem('emerdpayable5')) || 0,
+                        payable6: parseInt(localStorage.getItem('emerdpayable6')) || 0,
+                        payable7: parseInt(localStorage.getItem('emerdpayable7')) || 0,
+                        payable8: parseInt(localStorage.getItem('emerdpayable8')) || 0,
+                        payable9: parseInt(localStorage.getItem('emerdpayable9')) || 0
+                    }
+                };
+            } else {
+                console.log('payables object found in global scope:', payables);
+            }
+
+            // Function to populate payable table
+            function updatePayableTable() {
+                const payableTypes = ['payable0', 'payable1', 'payable2', 'payable3', 'payable4', 'payable5', 'payable6', 'payable7', 'payable8', 'payable9'];
+                const categories = ['Parity', 'Sapre', 'Bcone', 'Emerd'];
+                const $tbody = $('#payableTableBody');
+                $tbody.empty(); // Clear existing rows
+
+                console.log('Populating payable table with payables:', payables);
+
+                if (!payables || Object.keys(payables).length === 0) {
+                    console.error('payables object is empty or undefined');
+                    $tbody.append('<tr><td colspan="5">No payable data available</td></tr>');
+                    return;
+                }
+
+                payableTypes.forEach(type => {
+                    const displayType = type.replace('payable', '');
+                    const row = `
+                        <tr>
+                            <td>${displayType}</td>
+                            ${categories.map(category => {
+                                const value = payables[category] && payables[category][type] !== undefined ? payables[category][type] : 0;
+                                return `<td>${value}</td>`;
+                            }).join('')}
+                        </tr>`;
+                    $tbody.append(row);
+                });
+
+                console.log('Table population completed. Rows added:', payableTypes.length);
+            }
+
+            // Load and display payable table on page load
+            updatePayableTable();
+
+            // Check and toggle lock text based on isLocked flag
+            function updateLockText() {
+                const isLocked = localStorage.getItem('isLocked') === 'true';
+                $('#lockText').toggleClass('active', isLocked);
+            }
+            updateLockText();
+            setInterval(updateLockText, 1000);
+        });
+    </script>
+</body>
+</html>

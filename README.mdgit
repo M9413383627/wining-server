@@ -1,0 +1,1 @@
+"# wining-server"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/M9413383627/wining-server.gitgit push -u origin main
